@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibreX</title>
+    <link rel="icon" href="fav.png">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Smooth transitions */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Top Bar */
+        nav {
+            background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            transition: background-color 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        nav img {
+            width: 60px; /* Increased size for the logo */
+            transition: transform 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+            font-size: 18px;
+            color: linear-gradient(to right, rgb(34, 34, 34), rgb(53, 53, 53));
+            position: relative;
+            cursor: pointer;
+            transition: color 0.4s, transform 0.4s ease;
+        }
+
+        nav ul li::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3094ff;
+            transition: width 0.2s ease;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        nav ul li:hover::after {
+            width: 100%;
+        }
+
+        nav ul li:hover {
+            color: #007bff;
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            padding-top: 100px;
+            background: linear-gradient(to right, #000, #1f1f1f);
+            animation: fadeIn 1.5s ease;
+            margin-bottom: px;
+        }
+
+        .hero h1 {
+            font-size: 4.25rem;
+            color: #ffffff;
+            margin-bottom: 1px; /* Adjust margin for h2 */
+            letter-spacing: -1px;
+            opacity: 0;
+            animation: slideInFromTop 1.05s ease-out forwards;
+        }
+
+        .hero h2.nucleus {
+            font-size: 4rem; /* Slightly smaller than h1 */
+            color: rgb(226, 147, 0); /* Orange text */
+            margin: 5px 0; /* Center between h1 and p */
+            opacity: 0; /* Initially hidden */
+            animation: slideIn 1s ease forwards; /* Smooth animation */
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #e9e9e9;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1.8s ease forwards;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 40px; /* Space between buttons */
+        }
+
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            transform: translateY(-5px);
+        }
+
+        /* Shopping Icon */
+        .shop-icon {
+            position: relative;
+            width: 40px; /* Set size */
+            height: 40px; /* Set size */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .shop-icon:hover {
+            background-color: rgba(128, 128, 128, 0.2); /* Grey background on hover */
+            border-radius: 50%; /* Circular hover effect */
+        }
+
+        .shop-icon img {
+            width: 75%; /* Make sure the image fills the container */
+            height: 75%; /* Make sure the image fills the container */
+            transition: transform 0.3s ease; /* Smooth transition for image */
+        }
+
+        .shop-icon:hover img {
+            transform: scale(0.7); /* Scale down on hover */
+        }
+
+        .shop-icon:hover .shop-text {
+            opacity: 1; /* Show text on hover */
+            transform: translateY(-10px); /* Slide up effect */
+        }
+
+        .shop-text {
+            position: absolute;
+            bottom: 45px; /* Position above the icon */
+            opacity: 0; /* Hidden initially */
+            transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-20px); /* Start from above */
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromTop {
+            0% {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            nav ul li {
+                margin: 0 10px;
+                font-size: 16px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2.nucleus {
+                font-size: 2rem; /* Adjust size for smaller screens */
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <nav>
+        <img src="fav.png" alt="Logo">
+        <ul>
+            <li>Products</li>
+            <li>Support</li>
+            <li>Contact</li>
+        </ul>
+        <div class="shop-icon">
+            <img src="shopping-bag.svg" alt="Shop Icon">
+            <div class="shop-text">Shop</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>sPC</h1>
+        <h2 class="nucleus">Nucleus</h2> <!-- Added nucleus heading -->
+        <p>Your PC, at an affordable price.</p>
+        <div class="button-container">
+            <button class="button">Learn More</button>
+            <button class="button">Buy Now</button>
+        </div>
+    </section>
+
+</body>
+</html>
