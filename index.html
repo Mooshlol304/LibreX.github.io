@@ -32,11 +32,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 10%;
+            padding: 20px 5%;
             position: fixed;
             width: 100%;
             top: 0;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
             z-index: 100;
             transition: background-color 0.5s ease, box-shadow 0.5s ease;
         }
@@ -44,20 +44,25 @@
         nav img {
             width: 60px; /* Increased size for the logo */
             transition: transform 0.3s ease;
+            margin-top: 1px;
+            animation: slideInFromTop 1.05s ease-out forwards;
         }
 
         nav ul {
             display: flex;
             list-style: none;
+            animation: slideInFromTop 1.05s ease-out forwards;
         }
 
         nav ul li {
-            margin: 0 20px;
-            font-size: 18px;
+            margin: 0 100px;
+            font-size: 20px;
             color: linear-gradient(to right, rgb(34, 34, 34), rgb(53, 53, 53));
             position: relative;
             cursor: pointer;
             transition: color 0.4s, transform 0.4s ease;
+            margin-top: 1px;
+            animation: slideInFromTop 1.05s ease-out forwards;
         }
 
         nav ul li::after {
@@ -90,7 +95,7 @@
             text-align: center;
             height: 100vh;
             padding-top: 100px;
-            background: linear-gradient(to right, #000, #1f1f1f);
+            background: linear-gradient(to right, #1a1a1a, #1f1f1f);
             animation: fadeIn 1.5s ease;
             margin-bottom: px;
         }
@@ -154,6 +159,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 1px;
+            animation: slideInFromTop 1.05s ease-out forwards;
         }
 
         .shop-icon:hover {
@@ -178,12 +185,12 @@
 
         .shop-text {
             position: absolute;
-            bottom: 45px; /* Position above the icon */
+            bottom: 30px; /* Position above the icon */
             opacity: 0; /* Hidden initially */
             transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transitions */
             background-color: #fff;
             padding: 5px;
-            border-radius: 5px;
+            border-radius: 4.55px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
