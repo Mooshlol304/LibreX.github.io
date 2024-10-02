@@ -155,17 +155,16 @@
             width: 40px; /* Set size */
             height: 40px; /* Set size */
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Add transform here */
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 1px;
-            animation: slideInFromTop 1.05s ease-out forwards;
         }
 
         .shop-icon:hover {
             background-color: rgba(128, 128, 128, 0.2); /* Grey background on hover */
             border-radius: 50%; /* Circular hover effect */
+            transform: scale(0.9); /* Scale down the whole icon container */
         }
 
         .shop-icon img {
@@ -175,7 +174,7 @@
         }
 
         .shop-icon:hover img {
-            transform: scale(0.7); /* Scale down on hover */
+            transform: scale(0.6); /* Slight scale effect for image */
         }
 
         .shop-icon:hover .shop-text {
@@ -190,7 +189,7 @@
             transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transitions */
             background-color: #fff;
             padding: 5px;
-            border-radius: 4.55px;
+            border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
